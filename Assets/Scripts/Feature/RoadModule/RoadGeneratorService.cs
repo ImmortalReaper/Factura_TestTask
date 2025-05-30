@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using Addressables;
+using AddressablesAddress;
 using Core.AssetLoader;
 using Core.PrefabFactory;
 using UnityEngine;
@@ -10,31 +10,25 @@ public class RoadGeneratorService : IInitializable, ITickable
 {
     private readonly IObjectPoolService _objectPoolService;
     private readonly PlayerEntityModel _playerEntityModel;
-    private readonly IAddressablesAssetLoaderService _addressablesAssetLoaderService;
     private readonly RoadTypeConfig _roadTypeConfig;
-
-    private GameObject _roadPrefab;
+    
     List<GameObject> activeTiles = new();
 
     public RoadGeneratorService(IObjectPoolService objectPoolService, 
                                 PlayerEntityModel playerEntityModel, 
-                                IAddressablesAssetLoaderService addressablesAssetLoaderService,
                                 [Inject(Id = Address.Configs.DesertRoadTypeConfig)] RoadTypeConfig roadTypeConfig)
     {
         _objectPoolService = objectPoolService;
         _playerEntityModel = playerEntityModel;
         _roadTypeConfig = roadTypeConfig;
-        _addressablesAssetLoaderService = addressablesAssetLoaderService;
     }
 
     public void Initialize()
     {
         Vector3 spawnPos = Vector3.zero;
-        _roadPrefab = _addressablesAssetLoaderService.LoadAsset<GameObject>(_roadTypeConfig.GetAddressableName(_roadTypeConfig.RoadType));
         for (int i = 0; i < _roadTypeConfig.InitialBuffer; i++)
         {
-            var tile = _objectPoolService.Get(_roadPrefab);
-            Debug.Log(tile.activeSelf);
+            var tile = _objectPoolService.Get(_roadTypeConfig.RoadTypePrefab);
             tile.transform.position = spawnPos;
             activeTiles.Add(tile);
             spawnPos = new Vector3(tile.transform.position.x, tile.transform.position.y, tile.transform.position.z - _roadTypeConfig.RoadLength);
@@ -59,7 +53,7 @@ public class RoadGeneratorService : IInitializable, ITickable
     private void SpawnNext()
     {
         var prev = activeTiles.Last();
-        var tile = _objectPoolService.Get(_roadPrefab);
+        var tile = _objectPoolService.Get(_roadTypeConfig.RoadTypePrefab);
         tile.transform.position = new Vector3(prev.transform.position.x, prev.transform.position.y, prev.transform.position.z - _roadTypeConfig.RoadLength);
         activeTiles.Add(tile);
     }

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1074efa22a488419bc4ad681b632ed, type: 3}
   m_Name: DesertRoadTypeConfig
   m_EditorClassIdentifier: 
-  RoadType: 0
+  RoadTypePrefab: {fileID: 1172752117515105934, guid: 027723aa93c904449a456b91b65fa31e,
+    type: 3}
   RoadLength: 105
   SpawnThreshold: 400
   InitialBuffer: 5
