@@ -12,14 +12,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
                     "name": "",
                     "id": "3d38447f-2448-41cc-ab0a-cc234e9a03a3",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
@@ -30,7 +30,7 @@
                 {
                     "name": "",
                     "id": "9bbe0247-967b-4fe6-8309-ec8eebca0e39",
-                    "path": "<Touchscreen>/Press",
+                    "path": "<Touchscreen>/primaryTouch/position",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Screen",
