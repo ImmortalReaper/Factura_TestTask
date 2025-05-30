@@ -16,6 +16,7 @@ namespace AddressablesAddress
         public static class Scenes
         {
             public const string Gameplay = "Gameplay";
+            public const string Boot = "Boot";
         }
         
         public static class Configs
