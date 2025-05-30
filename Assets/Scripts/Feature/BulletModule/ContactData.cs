@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class ContactData
+namespace ShootingCar.Feature.BulletModule
 {
-    public Vector3 Point { get; set; }
-    public Vector3 Normal { get; set; }
-    
-    public ContactData(Vector3 point, Vector3 normal)
+    public class ContactData
     {
-        Point = point;
-        Normal = normal;
+        public Vector3 Point { get; set; }
+        public Vector3 Normal { get; set; }
+    
+        public ContactData(Vector3 point, Vector3 normal)
+        {
+            Point = point;
+            Normal = normal;
+        }
     }
 }

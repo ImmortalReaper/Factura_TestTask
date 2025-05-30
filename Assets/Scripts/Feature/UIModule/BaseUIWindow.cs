@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Feature.UI
+namespace ShootingCar.Feature.UIModule
 {
     public abstract class BaseUIWindow : MonoBehaviour
     {

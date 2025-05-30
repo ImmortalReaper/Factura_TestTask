@@ -1,37 +1,42 @@
-using Core.Input;
+using ShootingCar.Core.Input;
+using ShootingCar.Core.StateMachine;
+using ShootingCar.Feature.CarModule;
+using ShootingCar.Feature.PlayerData;
 using UnityEngine;
-using Zenject;
 
-public class WaitForInputState : IState
+namespace ShootingCar.Feature.GameLoopStateMachineModule
 {
-    private GameLoopStateMachine _gameLoopStateMachine;
-    private PlayerEntityModel _playerEntityModel;
-    private IInputService _inputService;
+    public class WaitForInputState : IState
+    {
+        private GameLoopStateMachine _gameLoopStateMachine;
+        private PlayerEntityModel _playerEntityModel;
+        private IInputService _inputService;
 
-    public WaitForInputState(IInputService inputService, 
-        PlayerEntityModel playerEntityModel,
-        GameLoopStateMachine gameLoopStateMachine)
-    {
-        _inputService = inputService;
-        _playerEntityModel = playerEntityModel;
-        _gameLoopStateMachine = gameLoopStateMachine;
-    }
-    
-    public void Enter()
-    {
-        if (_playerEntityModel.PlayerEntity != null)
+        public WaitForInputState(IInputService inputService, 
+            PlayerEntityModel playerEntityModel,
+            GameLoopStateMachine gameLoopStateMachine)
         {
-            CarController carController = _playerEntityModel.PlayerEntity.GetComponent<CarController>();
-            carController.CameraController.ActivateSideCamera();
+            _inputService = inputService;
+            _playerEntityModel = playerEntityModel;
+            _gameLoopStateMachine = gameLoopStateMachine;
         }
-        _inputService.OnTapPerformed += OnTapPerformed;
-    }
-
-    public void Exit()
-    {
-        _inputService.OnTapPerformed -= OnTapPerformed;
-    }
     
-    private void OnTapPerformed(Vector2 position) =>
-        _gameLoopStateMachine.ChangeState<GameplayState>();
+        public void Enter()
+        {
+            if (_playerEntityModel.PlayerEntity != null)
+            {
+                CarController carController = _playerEntityModel.PlayerEntity.GetComponent<CarController>();
+                carController.CameraController.ActivateSideCamera();
+            }
+            _inputService.OnTapPerformed += OnTapPerformed;
+        }
+
+        public void Exit()
+        {
+            _inputService.OnTapPerformed -= OnTapPerformed;
+        }
+    
+        private void OnTapPerformed(Vector2 position) =>
+            _gameLoopStateMachine.ChangeState<GameplayState>();
+    }
 }

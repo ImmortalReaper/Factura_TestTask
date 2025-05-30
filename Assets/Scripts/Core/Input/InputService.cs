@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Core.Input
+namespace ShootingCar.Core.Input
 {
     public class InputService : IInputService, IInitializable, IDisposable
     {

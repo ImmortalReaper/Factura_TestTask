@@ -1,5 +1,8 @@
-public interface IEnemySpawnService
+namespace ShootingCar.Feature.LevelModule
 {
-    public void StopSpawning();
-    public void StartSpawning(LevelConfig levelConfig);
+    public interface IEnemySpawnService
+    {
+        public void StopSpawning();
+        public void StartSpawning(LevelConfig levelConfig);
+    }
 }

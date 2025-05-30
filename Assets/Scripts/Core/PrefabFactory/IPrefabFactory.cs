@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Core.PrefabFactory
+namespace ShootingCar.Core.PrefabFactory
 {
     public interface IPrefabFactory
     {

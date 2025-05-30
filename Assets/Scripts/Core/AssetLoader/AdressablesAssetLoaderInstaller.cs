@@ -1,6 +1,6 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-namespace Core.AssetLoader
+namespace ShootingCar.Core.AssetLoader
 {
     public class AdressablesAssetLoaderInstaller : Installer<AdressablesAssetLoaderInstaller>
     {

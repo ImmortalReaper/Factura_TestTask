@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Core.Installer
+namespace ShootingCar.Core.Installer
 {
     public abstract class Installer<TDerived> : InstallerBase
         where TDerived : Installer<TDerived>

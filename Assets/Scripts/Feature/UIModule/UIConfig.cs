@@ -1,4 +1,4 @@
-namespace Feature.UI
+namespace ShootingCar.Feature.UIModule
 {
     public class UIConfig {
         public string Prefab;

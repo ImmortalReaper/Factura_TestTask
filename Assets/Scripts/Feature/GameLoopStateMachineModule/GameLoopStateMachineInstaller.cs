@@ -1,13 +1,16 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-public class GameLoopStateMachineInstaller : Installer<GameLoopStateMachineInstaller>
+namespace ShootingCar.Feature.GameLoopStateMachineModule
 {
-    public override void InstallBindings()
+    public class GameLoopStateMachineInstaller : Installer<GameLoopStateMachineInstaller>
     {
-        Container.Bind<GameLoopStateMachine>().AsSingle();
-        Container.Bind<WaitForInputState>().AsSingle();
-        Container.Bind<GameplayState>().AsSingle();
-        Container.Bind<WinState>().AsSingle();
-        Container.Bind<LoseState>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<GameLoopStateMachine>().AsSingle();
+            Container.Bind<WaitForInputState>().AsSingle();
+            Container.Bind<GameplayState>().AsSingle();
+            Container.Bind<WinState>().AsSingle();
+            Container.Bind<LoseState>().AsSingle();
+        }
     }
 }

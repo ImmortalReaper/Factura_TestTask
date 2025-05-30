@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Object = UnityEngine.Object;
 
-namespace Core.AssetLoader
+namespace ShootingCar.Core.AssetLoader
 {
     public class AddressablesAssetLoaderService : IAddressablesAssetLoaderService
     {

@@ -1,11 +1,14 @@
-public class EnemyDataService : IEnemyDataService
+namespace ShootingCar.Feature.EnemyAIModule.Config
 {
-    private EnemyConfigs _enemyConfigs;
-
-    public EnemyDataService(EnemyConfigs enemyConfigs)
+    public class EnemyDataService : IEnemyDataService
     {
-        _enemyConfigs = enemyConfigs;
-    }
+        private EnemyConfigs _enemyConfigs;
 
-    public EnemyData GetEnemyData(EnemyType enemyType) => _enemyConfigs.GetEnemyConfig(enemyType);
+        public EnemyDataService(EnemyConfigs enemyConfigs)
+        {
+            _enemyConfigs = enemyConfigs;
+        }
+
+        public EnemyData GetEnemyData(EnemyType enemyType) => _enemyConfigs.GetEnemyConfig(enemyType);
+    }
 }

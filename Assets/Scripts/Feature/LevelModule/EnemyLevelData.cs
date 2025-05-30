@@ -1,16 +1,20 @@
 using System;
+using ShootingCar.Feature.EnemyAIModule.Config;
 using UnityEngine;
 
-[Serializable]
-public class EnemyLevelData
+namespace ShootingCar.Feature.LevelModule
 {
-    public EnemyType EnemyType;
-    public AnimationCurve SpawnCurve;
-    
-    public int EvaluateSpawnCount(float currentDistance, float levelFinishDistance)
+    [Serializable]
+    public class EnemyLevelData
     {
-        float clamped = Mathf.Clamp(currentDistance, 0f, levelFinishDistance);
-        float value = SpawnCurve.Evaluate(clamped);
-        return Mathf.RoundToInt(value);
+        public EnemyType EnemyType;
+        public AnimationCurve SpawnCurve;
+    
+        public int EvaluateSpawnCount(float currentDistance, float levelFinishDistance)
+        {
+            float clamped = Mathf.Clamp(currentDistance, 0f, levelFinishDistance);
+            float value = SpawnCurve.Evaluate(clamped);
+            return Mathf.RoundToInt(value);
+        }
     }
 }

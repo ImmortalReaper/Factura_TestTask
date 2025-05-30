@@ -1,14 +1,17 @@
-using AddressablesAddress;
-using Core.AssetLoader;
-using Core.Installer;
+using ShootingCar.AddressablesAddress;
+using ShootingCar.Core.AssetLoader;
+using ShootingCar.Core.Installer;
 
-public class PlayerCarInstall : Installer<PlayerCarInstall>
+namespace ShootingCar.Feature.CarModule
 {
-    public override void InstallBindings()
+    public class PlayerCarInstall : Installer<PlayerCarInstall>
     {
-        IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
-        Container.Bind<CarStatsConfig>()
-            .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<CarStatsConfig>(Address.Configs.CarStatsConfig))
-            .AsSingle();
+        public override void InstallBindings()
+        {
+            IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
+            Container.Bind<CarStatsConfig>()
+                .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<CarStatsConfig>(Address.Configs.CarStatsConfig))
+                .AsSingle();
+        }
     }
 }

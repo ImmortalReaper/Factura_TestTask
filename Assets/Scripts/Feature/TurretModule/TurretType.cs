@@ -1,4 +1,7 @@
-public enum TurretType
+namespace ShootingCar.Feature.TurretModule
 {
-    StandardTurret,
+    public enum TurretType
+    {
+        StandardTurret,
+    }
 }

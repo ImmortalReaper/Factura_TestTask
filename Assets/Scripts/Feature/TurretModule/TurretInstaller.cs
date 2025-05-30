@@ -1,15 +1,18 @@
-using AddressablesAddress;
-using Core.AssetLoader;
-using Core.Installer;
+using ShootingCar.AddressablesAddress;
+using ShootingCar.Core.AssetLoader;
+using ShootingCar.Core.Installer;
 
-public class TurretInstaller : Installer<TurretInstaller>
+namespace ShootingCar.Feature.TurretModule
 {
-    public override void InstallBindings()
+    public class TurretInstaller : Installer<TurretInstaller>
     {
-        IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
-        Container.Bind<TurretConfig>()
-            .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<TurretConfig>(Address.Configs.TurretConfig))
-            .AsSingle();
-        Container.Bind<ITurretDataService>().To<TurretDataService>().AsSingle();
+        public override void InstallBindings()
+        {
+            IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
+            Container.Bind<TurretConfig>()
+                .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<TurretConfig>(Address.Configs.TurretConfig))
+                .AsSingle();
+            Container.Bind<ITurretDataService>().To<TurretDataService>().AsSingle();
+        }
     }
 }

@@ -1,4 +1,7 @@
-public enum BulletType
+namespace ShootingCar.Feature.BulletModule
 {
-    StandardBullet
+    public enum BulletType
+    {
+        StandardBullet
+    }
 }

@@ -1,33 +1,37 @@
-using Core.PrefabFactory;
+using ShootingCar.Core.PrefabFactory;
+using ShootingCar.Feature.PlayerData;
 using UnityEngine;
 using Zenject;
 
-public class WeatherService : ITickable, IInitializable
+namespace ShootingCar.Feature.WeatherModule
 {
-    private readonly PlayerEntityModel _playerEntityModel;
-    private readonly IPrefabFactory _prefabFactory;
-    private readonly IWeatherDataService _weatherDataService;
+    public class WeatherService : ITickable, IInitializable
+    {
+        private readonly PlayerEntityModel _playerEntityModel;
+        private readonly IPrefabFactory _prefabFactory;
+        private readonly IWeatherDataService _weatherDataService;
 
-    private WeatherData _weatherData;
-    private GameObject _weatherObject;
+        private WeatherData _weatherData;
+        private GameObject _weatherObject;
     
-    public WeatherService(IPrefabFactory prefabFactory,
-                          PlayerEntityModel playerEntityModel,
-                          IWeatherDataService weatherDataService)
-    {
-        _prefabFactory = prefabFactory;
-        _playerEntityModel = playerEntityModel;
-        _weatherDataService = weatherDataService;
-    }
+        public WeatherService(IPrefabFactory prefabFactory,
+            PlayerEntityModel playerEntityModel,
+            IWeatherDataService weatherDataService)
+        {
+            _prefabFactory = prefabFactory;
+            _playerEntityModel = playerEntityModel;
+            _weatherDataService = weatherDataService;
+        }
 
-    public void Initialize()
-    {
-        _weatherData = _weatherDataService.GetWeatherData(WeatherType.SandStorm);
-        _weatherObject = _prefabFactory.Create(_weatherData.WeatherPrefab);
-    }
+        public void Initialize()
+        {
+            _weatherData = _weatherDataService.GetWeatherData(WeatherType.SandStorm);
+            _weatherObject = _prefabFactory.Create(_weatherData.WeatherPrefab);
+        }
     
-    public void Tick()
-    {
-        _weatherObject.transform.position = _playerEntityModel.PlayerEntity.transform.position;
+        public void Tick()
+        {
+            _weatherObject.transform.position = _playerEntityModel.PlayerEntity.transform.position;
+        }
     }
 }

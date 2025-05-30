@@ -1,29 +1,32 @@
-using System;
 using DG.Tweening;
+using ShootingCar.Feature.Health;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarUI : MonoBehaviour
+namespace ShootingCar.Feature.UIModule.HealthBar
 {
-    [SerializeField] private Image healthBar;
+    public class HealthBarUI : MonoBehaviour
+    {
+        [SerializeField] private Image healthBar;
     
-    private IEntityHealth _entityHealth;
+        private IEntityHealth _entityHealth;
 
-    private void Awake()
-    {
-        _entityHealth = GetComponentInParent<IEntityHealth>();
-        _entityHealth.OnHealthChange += UpdateHealth;
-    }
+        private void Awake()
+        {
+            _entityHealth = GetComponentInParent<IEntityHealth>();
+            _entityHealth.OnHealthChange += UpdateHealth;
+        }
 
-    private void OnEnable() => UpdateHealth(_entityHealth.Health);
+        private void OnEnable() => UpdateHealth(_entityHealth.Health);
 
-    private void OnDestroy()
-    {
-        _entityHealth.OnHealthChange += UpdateHealth;
-    }
+        private void OnDestroy()
+        {
+            _entityHealth.OnHealthChange += UpdateHealth;
+        }
     
-    private void UpdateHealth(float health)
-    {
-        healthBar.DOFillAmount(health / _entityHealth.MaxHealth, 0.2f).SetEase(Ease.InOutQuart);
+        private void UpdateHealth(float health)
+        {
+            healthBar.DOFillAmount(health / _entityHealth.MaxHealth, 0.2f).SetEase(Ease.InOutQuart);
+        }
     }
 }

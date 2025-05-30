@@ -1,4 +1,7 @@
-public interface IWeatherDataService
+namespace ShootingCar.Feature.WeatherModule
 {
-    public WeatherData GetWeatherData(WeatherType weatherType);
+    public interface IWeatherDataService
+    {
+        public WeatherData GetWeatherData(WeatherType weatherType);
+    }
 }

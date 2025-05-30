@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = nameof(GameLevelsConfig), menuName = "Configurations/Game Levels Config/" + nameof(GameLevelsConfig))]
-public class GameLevelsConfig : ScriptableObject
+namespace ShootingCar.Feature.LevelModule
 {
-    public List<LevelConfig> levelConfigs;
+    [CreateAssetMenu(fileName = nameof(GameLevelsConfig), menuName = "Configurations/Game Levels Config/" + nameof(GameLevelsConfig))]
+    public class GameLevelsConfig : ScriptableObject
+    {
+        public List<LevelConfig> levelConfigs;
+    }
 }

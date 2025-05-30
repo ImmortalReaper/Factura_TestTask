@@ -1,6 +1,6 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-namespace Core.PrefabFactory
+namespace ShootingCar.Core.PrefabFactory
 {
     public class PrefabFactoryInstaller : Installer<PrefabFactoryInstaller>
     {

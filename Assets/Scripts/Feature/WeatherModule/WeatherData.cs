@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class WeatherData 
+namespace ShootingCar.Feature.WeatherModule
 {
-    public WeatherType WeatherType;
-    public GameObject WeatherPrefab;
+    [Serializable]
+    public class WeatherData 
+    {
+        public WeatherType WeatherType;
+        public GameObject WeatherPrefab;
+    }
 }

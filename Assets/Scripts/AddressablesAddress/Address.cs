@@ -1,4 +1,4 @@
-namespace AddressablesAddress
+namespace ShootingCar.AddressablesAddress
 {
     public static class Address
     {

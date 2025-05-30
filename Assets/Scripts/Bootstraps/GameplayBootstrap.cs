@@ -1,9 +1,19 @@
-using Core.PrefabFactory;
-using Feature.UI;
+using ShootingCar.Core.ObjectPool;
+using ShootingCar.Core.PrefabFactory;
+using ShootingCar.Feature.BulletModule;
+using ShootingCar.Feature.CarModule;
+using ShootingCar.Feature.EnemyAIModule;
+using ShootingCar.Feature.GameLoopStateMachineModule;
+using ShootingCar.Feature.LevelModule;
+using ShootingCar.Feature.PlayerData;
+using ShootingCar.Feature.RoadModule;
+using ShootingCar.Feature.TurretModule;
+using ShootingCar.Feature.UIModule;
+using ShootingCar.Feature.WeatherModule;
 using UnityEngine;
 using Zenject;
 
-namespace Bootstraps
+namespace ShootingCar.Bootstraps
 {
     [CreateAssetMenu(fileName = "GameplayBootstrap", menuName = "Installers/GameplayBootstrap")]
     public class GameplayBootstrap : ScriptableObjectInstaller<GameplayBootstrap>

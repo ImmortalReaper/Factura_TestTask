@@ -1,15 +1,19 @@
-using AddressablesAddress;
-using Core.AssetLoader;
-using Core.Installer;
+using ShootingCar.AddressablesAddress;
+using ShootingCar.Core.AssetLoader;
+using ShootingCar.Core.Installer;
+using ShootingCar.Feature.EnemyAIModule.Config;
 
-public class EnemyModuleIntsaller : Installer<EnemyModuleIntsaller>
+namespace ShootingCar.Feature.EnemyAIModule
 {
-    public override void InstallBindings()
+    public class EnemyModuleIntsaller : Installer<EnemyModuleIntsaller>
     {
-        IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
-        Container.Bind<EnemyConfigs>()
-            .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<EnemyConfigs>(Address.Configs.EnemyConfigs))
-            .AsSingle();
-        Container.Bind<IEnemyDataService>().To<EnemyDataService>().AsSingle();
+        public override void InstallBindings()
+        {
+            IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
+            Container.Bind<EnemyConfigs>()
+                .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<EnemyConfigs>(Address.Configs.EnemyConfigs))
+                .AsSingle();
+            Container.Bind<IEnemyDataService>().To<EnemyDataService>().AsSingle();
+        }
     }
 }

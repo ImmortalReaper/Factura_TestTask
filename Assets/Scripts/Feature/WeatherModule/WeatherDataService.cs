@@ -1,11 +1,14 @@
-public class WeatherDataService : IWeatherDataService
+namespace ShootingCar.Feature.WeatherModule
 {
-    private WeatherConfigs _weatherConfigs;
-
-    public WeatherDataService(WeatherConfigs weatherConfigs)
+    public class WeatherDataService : IWeatherDataService
     {
-        _weatherConfigs = weatherConfigs;
-    }
+        private WeatherConfigs _weatherConfigs;
 
-    public WeatherData GetWeatherData(WeatherType weatherType) => _weatherConfigs.GetWeatherData(weatherType);
+        public WeatherDataService(WeatherConfigs weatherConfigs)
+        {
+            _weatherConfigs = weatherConfigs;
+        }
+
+        public WeatherData GetWeatherData(WeatherType weatherType) => _weatherConfigs.GetWeatherData(weatherType);
+    }
 }

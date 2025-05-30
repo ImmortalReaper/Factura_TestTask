@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Core.AssetLoader;
+using ShootingCar.Core.AssetLoader;
 using UnityEngine;
 using Zenject;
 
-namespace Feature.UI
+namespace ShootingCar.Feature.UIModule
 {
     public class UIService : IUIService {
         private DiContainer _container;

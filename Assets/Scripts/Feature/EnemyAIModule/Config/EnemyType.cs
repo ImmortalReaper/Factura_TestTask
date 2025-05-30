@@ -1,4 +1,7 @@
-public enum EnemyType
+namespace ShootingCar.Feature.EnemyAIModule.Config
 {
-    StandartStickman
+    public enum EnemyType
+    {
+        StandartStickman
+    }
 }

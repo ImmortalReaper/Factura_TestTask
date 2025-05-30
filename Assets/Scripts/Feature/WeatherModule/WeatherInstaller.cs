@@ -1,16 +1,19 @@
-using AddressablesAddress;
-using Core.AssetLoader;
-using Core.Installer;
+using ShootingCar.AddressablesAddress;
+using ShootingCar.Core.AssetLoader;
+using ShootingCar.Core.Installer;
 
-public class WeatherInstaller : Installer<WeatherInstaller>
+namespace ShootingCar.Feature.WeatherModule
 {
-    public override void InstallBindings()
+    public class WeatherInstaller : Installer<WeatherInstaller>
     {
-        IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
-        Container.Bind<WeatherConfigs>()
-            .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<WeatherConfigs>(Address.Configs.WeatherConfigs))
-            .AsSingle();
-        Container.Bind<IWeatherDataService>().To<WeatherDataService>().AsSingle();
-        Container.BindInterfacesAndSelfTo<WeatherService>().AsSingle().NonLazy();
+        public override void InstallBindings()
+        {
+            IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
+            Container.Bind<WeatherConfigs>()
+                .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<WeatherConfigs>(Address.Configs.WeatherConfigs))
+                .AsSingle();
+            Container.Bind<IWeatherDataService>().To<WeatherDataService>().AsSingle();
+            Container.BindInterfacesAndSelfTo<WeatherService>().AsSingle().NonLazy();
+        }
     }
 }

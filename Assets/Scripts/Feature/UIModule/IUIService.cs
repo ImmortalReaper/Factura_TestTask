@@ -1,4 +1,4 @@
-namespace Feature.UI
+namespace ShootingCar.Feature.UIModule
 {
     public interface IUIService {
         public T Show<T>() where T : BaseUIWindow;

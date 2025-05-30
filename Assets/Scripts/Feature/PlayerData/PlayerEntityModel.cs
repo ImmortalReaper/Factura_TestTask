@@ -1,21 +1,24 @@
 using System;
 using UnityEngine;
 
-public class PlayerEntityModel
+namespace ShootingCar.Feature.PlayerData
 {
-    private GameObject _playerEntity;
+    public class PlayerEntityModel
+    {
+        private GameObject _playerEntity;
 
-    public GameObject PlayerEntity {
-        get =>
-            _playerEntity;
-        set {
-            if(_playerEntity == value)
-                return;
+        public GameObject PlayerEntity {
+            get =>
+                _playerEntity;
+            set {
+                if(_playerEntity == value)
+                    return;
                 
-            _playerEntity = value;
-            OnPlayerEntityChanged?.Invoke();
+                _playerEntity = value;
+                OnPlayerEntityChanged?.Invoke();
+            }
         }
-    }
 
-    public event Action OnPlayerEntityChanged;
+        public event Action OnPlayerEntityChanged;
+    }
 }

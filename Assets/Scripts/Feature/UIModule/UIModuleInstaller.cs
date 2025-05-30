@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using AddressablesAddress;
+using ShootingCar.AddressablesAddress;
 using Zenject;
 
-namespace Feature.UI
+namespace ShootingCar.Feature.UIModule
 {
     public class UIModuleInstaller : Installer<UIModuleInstaller>
     {
@@ -11,8 +11,8 @@ namespace Feature.UI
         {
             Container.Bind<IUIService>().To<UIService>().AsSingle()
                 .WithArguments(new Dictionary<Type, UIConfig> {
-                    { typeof(WinUI), new UIConfig(Address.UI.WinUI, 0) },
-                    { typeof(LoseUI), new UIConfig(Address.UI.LoseUI, 1) }
+                    { typeof(WinUI.WinUI), new UIConfig(Address.UI.WinUI, 0) },
+                    { typeof(LoseUI.LoseUI), new UIConfig(Address.UI.LoseUI, 1) }
                 });
         }
     }

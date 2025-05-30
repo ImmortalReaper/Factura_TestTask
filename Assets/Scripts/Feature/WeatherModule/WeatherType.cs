@@ -1,4 +1,7 @@
-public enum WeatherType
+namespace ShootingCar.Feature.WeatherModule
 {
-    SandStorm
+    public enum WeatherType
+    {
+        SandStorm
+    }
 }

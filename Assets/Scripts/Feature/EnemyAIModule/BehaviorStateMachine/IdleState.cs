@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class IdleState : IBehaviorState
+namespace ShootingCar.Feature.EnemyAIModule.BehaviorStateMachine
 {
-    private Animator _animator;
-    private string stickmanBlendParameter = "Blend";
-    
-    public IdleState(Animator animator)
+    public class IdleState : IBehaviorState
     {
-        _animator = animator;
-    }
+        private Animator _animator;
+        private string stickmanBlendParameter = "Blend";
     
-    public void Enter()
-    {
-        _animator.SetFloat(stickmanBlendParameter, 0f);
-    }
+        public IdleState(Animator animator)
+        {
+            _animator = animator;
+        }
+    
+        public void Enter()
+        {
+            _animator.SetFloat(stickmanBlendParameter, 0f);
+        }
 
-    public void Exit() { }
+        public void Exit() { }
     
-    public void Update() { }
+        public void Update() { }
+    }
 }

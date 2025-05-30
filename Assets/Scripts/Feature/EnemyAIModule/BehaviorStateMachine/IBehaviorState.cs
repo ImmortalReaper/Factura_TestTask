@@ -1,4 +1,9 @@
-public interface IBehaviorState : IState
+using ShootingCar.Core.StateMachine;
+
+namespace ShootingCar.Feature.EnemyAIModule.BehaviorStateMachine
 {
-    public void Update();
+    public interface IBehaviorState : IState
+    {
+        public void Update();
+    }
 }

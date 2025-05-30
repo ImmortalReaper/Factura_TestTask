@@ -1,8 +1,8 @@
-using Core.AssetLoader;
+using ShootingCar.Core.AssetLoader;
 using UnityEngine;
 using Zenject;
 
-namespace Core.PrefabFactory
+namespace ShootingCar.Core.PrefabFactory
 {
     public class PrefabsFactory : IPrefabFactory
     {

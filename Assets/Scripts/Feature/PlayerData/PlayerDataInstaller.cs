@@ -1,9 +1,12 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-public class PlayerDataInstaller : Installer<PlayerDataInstaller>
+namespace ShootingCar.Feature.PlayerData
 {
-    public override void InstallBindings()
+    public class PlayerDataInstaller : Installer<PlayerDataInstaller>
     {
-        Container.Bind<PlayerEntityModel>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<PlayerEntityModel>().AsSingle();
+        }
     }
 }

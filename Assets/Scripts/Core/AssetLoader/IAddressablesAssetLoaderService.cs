@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Core.AssetLoader
+namespace ShootingCar.Core.AssetLoader
 {
     public interface IAddressablesAssetLoaderService
     {

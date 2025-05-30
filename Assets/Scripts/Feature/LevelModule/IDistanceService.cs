@@ -1,10 +1,13 @@
 using System;
 
-public interface IDistanceService
+namespace ShootingCar.Feature.LevelModule
 {
-    public float CompleteNormalizedDistance { get; }
-    public float CompleteDistance { get; }
-    public event Action OnLevelCompleted;
-    public void StartTracking(LevelConfig levelConfig);
-    public void StopTracking();
+    public interface IDistanceService
+    {
+        public float CompleteNormalizedDistance { get; }
+        public float CompleteDistance { get; }
+        public event Action OnLevelCompleted;
+        public void StartTracking(LevelConfig levelConfig);
+        public void StopTracking();
+    }
 }

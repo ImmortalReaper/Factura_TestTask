@@ -1,11 +1,14 @@
-public class BulletDataService : IBulletDataService
+namespace ShootingCar.Feature.BulletModule
 {
-    private BulletsConfig _bulletsConfig;
-
-    public BulletDataService(BulletsConfig bulletsConfig)
+    public class BulletDataService : IBulletDataService
     {
-        _bulletsConfig = bulletsConfig;
-    }
+        private BulletsConfig _bulletsConfig;
 
-    public BulletData GetBulletData(BulletType bulletType) => _bulletsConfig.GetBulletConfig(bulletType);
+        public BulletDataService(BulletsConfig bulletsConfig)
+        {
+            _bulletsConfig = bulletsConfig;
+        }
+
+        public BulletData GetBulletData(BulletType bulletType) => _bulletsConfig.GetBulletConfig(bulletType);
+    }
 }

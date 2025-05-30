@@ -1,7 +1,10 @@
 using UnityEngine;
 
-public interface ITurretDataService
+namespace ShootingCar.Feature.TurretModule
 {
-    public TurretData GetTurretConfig(TurretType turretType);
-    public LayerMask GetTargetLayerMask();
+    public interface ITurretDataService
+    {
+        public TurretData GetTurretConfig(TurretType turretType);
+        public LayerMask GetTargetLayerMask();
+    }
 }

@@ -1,9 +1,12 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-public class AddressablesSceneLoaderInstaller : Installer<AddressablesSceneLoaderInstaller>
+namespace ShootingCar.Core.SceneLoader
 {
-    public override void InstallBindings()
+    public class AddressablesSceneLoaderInstaller : Installer<AddressablesSceneLoaderInstaller>
     {
-        Container.Bind<IAddressablesSceneLoaderService>().To<AddressablesSceneLoaderService>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<IAddressablesSceneLoaderService>().To<AddressablesSceneLoaderService>().AsSingle();
+        }
     }
 }

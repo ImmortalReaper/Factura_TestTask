@@ -1,4 +1,7 @@
-public interface IBulletDataService
+namespace ShootingCar.Feature.BulletModule
 {
-    public BulletData GetBulletData(BulletType bulletType);
+    public interface IBulletDataService
+    {
+        public BulletData GetBulletData(BulletType bulletType);
+    }
 }

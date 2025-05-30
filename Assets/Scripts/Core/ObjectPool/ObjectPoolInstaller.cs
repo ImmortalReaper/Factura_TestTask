@@ -1,9 +1,12 @@
-using Core.Installer;
+using ShootingCar.Core.Installer;
 
-public class ObjectPoolInstaller : Installer<ObjectPoolInstaller>
+namespace ShootingCar.Core.ObjectPool
 {
-    public override void InstallBindings()
+    public class ObjectPoolInstaller : Installer<ObjectPoolInstaller>
     {
-        Container.BindInterfacesAndSelfTo<ObjectPoolSystem>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.BindInterfacesAndSelfTo<ObjectPoolSystem>().AsSingle();
+        }
     }
 }

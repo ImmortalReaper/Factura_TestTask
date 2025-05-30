@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class TurretDataService : ITurretDataService
+namespace ShootingCar.Feature.TurretModule
 {
-    private TurretConfig _turretConfig;
-
-    public TurretDataService(TurretConfig turretConfig)
+    public class TurretDataService : ITurretDataService
     {
-        _turretConfig = turretConfig;
-    }
+        private TurretConfig _turretConfig;
 
-    public TurretData GetTurretConfig(TurretType turretType) => _turretConfig.GetTurretConfig(turretType);
-    public LayerMask GetTargetLayerMask() => _turretConfig.TargetLayer;
+        public TurretDataService(TurretConfig turretConfig)
+        {
+            _turretConfig = turretConfig;
+        }
+
+        public TurretData GetTurretConfig(TurretType turretType) => _turretConfig.GetTurretConfig(turretType);
+        public LayerMask GetTargetLayerMask() => _turretConfig.TargetLayer;
+    }
 }

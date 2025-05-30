@@ -1,11 +1,14 @@
 using System;
 
-[Serializable]
-public class BulletData
+namespace ShootingCar.Feature.BulletModule
 {
-    public BulletType BulletType;
-    public Bullet BulletPrefab;
-    public float BulletSpeed;
-    public float BulletDamage;
-    public float BulletLifeTime;
+    [Serializable]
+    public class BulletData
+    {
+        public BulletType BulletType;
+        public Bullet BulletPrefab;
+        public float BulletSpeed;
+        public float BulletDamage;
+        public float BulletLifeTime;
+    }
 }

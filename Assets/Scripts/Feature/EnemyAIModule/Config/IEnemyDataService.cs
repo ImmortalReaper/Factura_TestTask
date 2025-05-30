@@ -1,4 +1,7 @@
-public interface IEnemyDataService
+namespace ShootingCar.Feature.EnemyAIModule.Config
 {
-    public EnemyData GetEnemyData(EnemyType enemyType);
+    public interface IEnemyDataService
+    {
+        public EnemyData GetEnemyData(EnemyType enemyType);
+    }
 }

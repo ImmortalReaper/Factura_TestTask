@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-public interface IAddressablesSceneLoaderService
+namespace ShootingCar.Core.SceneLoader
 {
-    int LoadedScenesCount { get; }
-    public UniTask LoadAsync(string sceneId, bool clearOthers);
-    public UniTask LoadMultipleAsync(List<string> sceneIds, bool clearOthers);
-    public UniTask ReleaseSceneAsync(string sceneId);
-    public UniTask ReleaseScenesAsync(List<string> sceneIds);
+    public interface IAddressablesSceneLoaderService
+    {
+        int LoadedScenesCount { get; }
+        public UniTask LoadAsync(string sceneId, bool clearOthers);
+        public UniTask LoadMultipleAsync(List<string> sceneIds, bool clearOthers);
+        public UniTask ReleaseSceneAsync(string sceneId);
+        public UniTask ReleaseScenesAsync(List<string> sceneIds);
+    }
 }

@@ -1,5 +1,8 @@
-public interface ILevelConfigService
+namespace ShootingCar.Feature.LevelModule
 {
-    LevelConfig GetLevelConfig(int levelIndex);
-    int LevelCount { get; }
+    public interface ILevelConfigService
+    {
+        LevelConfig GetLevelConfig(int levelIndex);
+        int LevelCount { get; }
+    }
 }

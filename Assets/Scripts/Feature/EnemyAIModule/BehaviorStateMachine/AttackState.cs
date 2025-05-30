@@ -1,34 +1,39 @@
+using ShootingCar.Feature.CarModule;
+using ShootingCar.Feature.PlayerData;
 using UnityEngine;
 
-public class AttackState : IBehaviorState
+namespace ShootingCar.Feature.EnemyAIModule.BehaviorStateMachine
 {
-    private StickmanBrain _stickmanBrain;
-    private PlayerEntityModel _playerEntityModel;
-    private string stickmanBlendParameter = "Blend";
-
-    private Transform _carTransform;
-    
-    public AttackState(PlayerEntityModel playerEntityModel, StickmanBrain stickmanBrain)
+    public class AttackState : IBehaviorState
     {
-        _playerEntityModel = playerEntityModel;
-        _stickmanBrain = stickmanBrain;
-    }
+        private StickmanBrain _stickmanBrain;
+        private PlayerEntityModel _playerEntityModel;
+        private string stickmanBlendParameter = "Blend";
 
-    public void Enter()
-    {
-        _stickmanBrain.StickmanAnimator.SetFloat(stickmanBlendParameter, 1f);
-        _carTransform = _playerEntityModel.PlayerEntity.GetComponent<CarController>().CarTransform;
-    }
+        private Transform _carTransform;
     
-    public void Exit() { }
-    
-    public void Update()
-    {
-        if (_playerEntityModel.PlayerEntity == null) return;
+        public AttackState(PlayerEntityModel playerEntityModel, StickmanBrain stickmanBrain)
+        {
+            _playerEntityModel = playerEntityModel;
+            _stickmanBrain = stickmanBrain;
+        }
 
-        Vector3 direction = (_carTransform.position - _stickmanBrain.transform.position).normalized;
-        if (direction != Vector3.zero)
-            _stickmanBrain.transform.rotation = Quaternion.LookRotation(direction);
-        _stickmanBrain.transform.position += direction * (_stickmanBrain.EnemyData.EnemySpeed * Time.deltaTime);
+        public void Enter()
+        {
+            _stickmanBrain.StickmanAnimator.SetFloat(stickmanBlendParameter, 1f);
+            _carTransform = _playerEntityModel.PlayerEntity.GetComponent<CarController>().CarTransform;
+        }
+    
+        public void Exit() { }
+    
+        public void Update()
+        {
+            if (_playerEntityModel.PlayerEntity == null) return;
+
+            Vector3 direction = (_carTransform.position - _stickmanBrain.transform.position).normalized;
+            if (direction != Vector3.zero)
+                _stickmanBrain.transform.rotation = Quaternion.LookRotation(direction);
+            _stickmanBrain.transform.position += direction * (_stickmanBrain.EnemyData.EnemySpeed * Time.deltaTime);
+        }
     }
 }

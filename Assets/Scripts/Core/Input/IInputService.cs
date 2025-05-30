@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Core.Input
+namespace ShootingCar.Core.Input
 {
     public interface IInputService
     {

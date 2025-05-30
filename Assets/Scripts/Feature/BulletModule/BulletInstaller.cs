@@ -1,15 +1,18 @@
-using AddressablesAddress;
-using Core.AssetLoader;
-using Core.Installer;
+using ShootingCar.AddressablesAddress;
+using ShootingCar.Core.AssetLoader;
+using ShootingCar.Core.Installer;
 
-public class BulletInstaller : Installer<BulletInstaller>
+namespace ShootingCar.Feature.BulletModule
 {
-    public override void InstallBindings()
+    public class BulletInstaller : Installer<BulletInstaller>
     {
-        IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
-        Container.Bind<BulletsConfig>()
-            .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<BulletsConfig>(Address.Configs.BulletConfig))
-            .AsSingle();
-        Container.Bind<IBulletDataService>().To<BulletDataService>().AsSingle();
+        public override void InstallBindings()
+        {
+            IAddressablesAssetLoaderService addressablesAssetLoaderService = Container.Resolve<IAddressablesAssetLoaderService>();
+            Container.Bind<BulletsConfig>()
+                .FromScriptableObject(addressablesAssetLoaderService.LoadAsset<BulletsConfig>(Address.Configs.BulletConfig))
+                .AsSingle();
+            Container.Bind<IBulletDataService>().To<BulletDataService>().AsSingle();
+        }
     }
 }

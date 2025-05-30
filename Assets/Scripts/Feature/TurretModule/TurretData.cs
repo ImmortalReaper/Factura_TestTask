@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class TurretData
+namespace ShootingCar.Feature.TurretModule
 {
-    public TurretType TurretType;
-    public GameObject TurretPrefab;
-    public float TurretFireRateInSec;
+    [Serializable]
+    public class TurretData
+    {
+        public TurretType TurretType;
+        public GameObject TurretPrefab;
+        public float TurretFireRateInSec;
+    }
 }
