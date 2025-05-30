@@ -22,8 +22,33 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3a6f0d45354c3de49869a4752f449a88
+    m_Address: TurretConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7e09d03d28310304fa5e29ea4e1524bc
+    m_Address: EnemyConfigs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: acf81d4bc15238a4eb387a2aa134081f
+    m_Address: WeatherConfigs
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b26034e206049074491c3426464b99e7
+    m_Address: BulletConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c2768056f906c774a92838f2bf7b0947
     m_Address: DesertRoadTypeConfig
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eaf9689fb9d032f4d94667519ade3813
+    m_Address: GameLevelsConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

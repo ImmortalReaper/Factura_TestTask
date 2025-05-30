@@ -10,25 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Prefabs
+  m_Name: Scenes
   m_EditorClassIdentifier: 
-  m_GroupName: Prefabs
+  m_GroupName: Scenes
   m_Data:
     m_SerializedData: []
-  m_GUID: cb8400a6d3875c04ca9263f8ef0d0264
+  m_GUID: 719688a75d549c74788d55edb8146f4c
   m_SerializeEntries:
-  - m_GUID: 027723aa93c904449a456b91b65fa31e
-    m_Address: DesertRoad
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a30fea1d41e11b7419142a0fed7640d6
-    m_Address: Stickman
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d1e133d72afc5cd4a857a1b82b4937a4
-    m_Address: Car
+  - m_GUID: 99c9720ab356a0642a771bea13969a05
+    m_Address: Gameplay
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -36,5 +26,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 54fc480882f481b4f81a75e51500c763, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 538b1ebbd64531e43bea1ed19e8811ba, type: 2}
-    - {fileID: 11400000, guid: 7c643560de1061c4bac665ce0faf1ab7, type: 2}
+    - {fileID: 11400000, guid: d0355aa74f3620a49bf9862a7cbefd46, type: 2}
+    - {fileID: 11400000, guid: 350a9681ee4f6c742ab0112ab5164499, type: 2}
