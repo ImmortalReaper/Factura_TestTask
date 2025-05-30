@@ -10,6 +10,7 @@ namespace Bootstraps
         public override void InstallBindings()
         {
             AdressablesAssetLoaderInstaller.Install(Container);
+            AddressablesSceneLoaderInstaller.Install(Container);
         }
     }
 }
