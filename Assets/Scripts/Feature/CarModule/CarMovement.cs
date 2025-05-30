@@ -94,7 +94,7 @@ public class CarMovement : MonoBehaviour
         
         cancellationToken.Register(() =>
         {
-            DOTween.Kill(transform);
+            tween.Kill();
             uniTaskCompletionSource.TrySetCanceled();
         });
         

@@ -3,20 +3,19 @@ using Core.Input;
 using Cysharp.Threading.Tasks;
 using Feature.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoseState : IState
 {
     private PlayerEntityModel _playerEntityModel;
     private IInputService _inputService;
     private IUIService _uiService;
-    private IAddressablesSceneLoaderService _addressablesSceneLoaderService;
 
-    public LoseState(IInputService inputService, IUIService uiService, PlayerEntityModel playerEntityModel, IAddressablesSceneLoaderService addressablesSceneLoaderService)
+    public LoseState(IInputService inputService, IUIService uiService, PlayerEntityModel playerEntityModel)
     {
         _inputService = inputService;
         _uiService = uiService;
         _playerEntityModel = playerEntityModel;
-        _addressablesSceneLoaderService = addressablesSceneLoaderService;
     }
     
     public void Enter()
@@ -33,14 +32,11 @@ public class LoseState : IState
         }
     }
 
-    public void Exit()
-    {
-        _inputService.OnTapPerformed -= OnTapPerformed;
-    }
+    public void Exit() { }
 
     private void OnTapPerformed(Vector2 position)
     {
-        Debug.Log("OnInputPositionPerformed");
-        _addressablesSceneLoaderService.LoadSceneAsync(Address.Scenes.Gameplay);
+        _inputService.OnTapPerformed -= OnTapPerformed;
+        SceneManager.LoadSceneAsync(Address.Scenes.Gameplay, LoadSceneMode.Single);
     }
 }

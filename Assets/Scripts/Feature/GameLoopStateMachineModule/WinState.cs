@@ -3,20 +3,19 @@ using Core.Input;
 using Cysharp.Threading.Tasks;
 using Feature.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WinState : IState
 {
     private PlayerEntityModel _playerEntityModel;
     private IInputService _inputService;
     private IUIService _uiService;
-    private IAddressablesSceneLoaderService _addressablesSceneLoaderService;
 
     public WinState(IInputService inputService, IUIService uiService, PlayerEntityModel playerEntityModel, IAddressablesSceneLoaderService addressablesSceneLoaderService)
     {
         _inputService = inputService;
         _uiService = uiService;
         _playerEntityModel = playerEntityModel;
-        _addressablesSceneLoaderService = addressablesSceneLoaderService;
     }
     
     public void Enter()
@@ -34,13 +33,11 @@ public class WinState : IState
         }
     }
 
-    public void Exit()
-    {
-        _inputService.OnTapPerformed -= OnTapPerformed;
-    }
+    public void Exit() { }
 
     private void OnTapPerformed(Vector2 position)
     {
-        _addressablesSceneLoaderService.LoadSceneAsync(Address.Scenes.Gameplay);
+        _inputService.OnTapPerformed -= OnTapPerformed;
+        SceneManager.LoadSceneAsync(Address.Scenes.Gameplay, LoadSceneMode.Single);
     }
 }
