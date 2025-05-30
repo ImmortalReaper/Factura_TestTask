@@ -1,4 +1,4 @@
-using Addressables;
+using AddressablesAddress;
 using Core.PrefabFactory;
 using UnityEngine;
 using Zenject;
@@ -15,7 +15,7 @@ public class PlayerCarSpawner : MonoBehaviour
         _playerEntityModel = playerEntityModel;
     }
 
-    private void Start()
+    private void Awake()
     {
         GameObject player = _prefabFactory.Create(Address.Prefabs.Car, transform.position);
         _playerEntityModel.PlayerEntity = player;

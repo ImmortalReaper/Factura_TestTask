@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1377d7209c6197341ae95414ea9f7cfa, type: 3}
   m_Name: CarStatsConfig
   m_EditorClassIdentifier: 
-  CarMaxSpeed: 15
+  CarForwardMaxSpeed: 8
+  CarHorizontalMaxSpeed: 0.3
   CarAcceleration: 1
   CarDeceleration: 1.5
   CarMaxHealth: 100
+  minHorizontalMovementCooldown: 5
+  maxHorizontalMovementCooldown: 15
+  carHorizontalOffset: 4.5

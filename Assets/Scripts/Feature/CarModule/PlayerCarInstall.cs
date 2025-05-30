@@ -1,4 +1,4 @@
-using Addressables;
+using AddressablesAddress;
 using Core.AssetLoader;
 using Core.Installer;
 
