@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3325014205835899043}
   - component: {fileID: 3085526199530115702}
+  - component: {fileID: 3307334712797696717}
   m_Layer: 0
   m_Name: GameplayBootstrap
   m_TagString: Untagged
@@ -64,3 +65,15 @@ MonoBehaviour:
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
   _parentContractNames: []
+--- !u!114 &3307334712797696717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2857466674821927661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3112f1c827b1ff4ba534dc8c7b340e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
