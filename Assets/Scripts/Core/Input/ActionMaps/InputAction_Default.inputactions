@@ -6,12 +6,21 @@
             "id": "f3534b5a-f0d5-429e-85ad-59ad30397857",
             "actions": [
                 {
-                    "name": "InputPosition",
+                    "name": "Tap",
                     "type": "Button",
                     "id": "bbced872-9fb5-415d-a646-51510307b96d",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Tap(duration=0.15)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Hold",
+                    "type": "Button",
+                    "id": "3bd7ea81-f0b1-4819-bb83-7f9a5c1456c2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
                 }
             ],
@@ -19,22 +28,44 @@
                 {
                     "name": "",
                     "id": "3d38447f-2448-41cc-ab0a-cc234e9a03a3",
-                    "path": "<Mouse>/position",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": ";KeyboardMouse",
-                    "action": "InputPosition",
+                    "action": "Tap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "9bbe0247-967b-4fe6-8309-ec8eebca0e39",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "path": "<Touchscreen>/Press",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Screen",
-                    "action": "InputPosition",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e09ede51-99fa-4558-9d85-acb1083758c1",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";KeyboardMouse",
+                    "action": "Hold",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c902dda4-aa3f-4340-8e17-f452c2962112",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Screen",
+                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

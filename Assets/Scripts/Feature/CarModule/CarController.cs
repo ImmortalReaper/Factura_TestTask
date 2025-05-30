@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
 
@@ -50,6 +51,7 @@ public class CarController : MonoBehaviour
     private void OnDamageTaken()
     {
         flashEffect.PlayFlashEffect();
+        CarTransform.DOPunchScale(Vector3.one * 0.1f, 0.2f, 60);
     }
 
     private void OnValidate()

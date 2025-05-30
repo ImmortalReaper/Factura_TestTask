@@ -1,46 +1,117 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
 namespace Core.Input
 {
-    public class InputService : IInputService, IInitializable, IDisposable 
+    public class InputService : IInputService, IInitializable, IDisposable
     {
         private const string PLAYER_ACTION_MAP = "Player";
-        private const string INPUT_POSITION_ACTION = "InputPosition";
+        private const string TAP_ACTION = "Tap";
+        private const string HOLD_ACTION = "Hold";
+
         private readonly InputActionAsset _inputActions;
-        private InputAction _interactionAction;
+        private InputAction _tapAction;
+        private InputAction _holdAction;
+        private CancellationTokenSource _holdCts;
         
-        public bool IsInteractionPressed => _interactionAction.IsPressed();
-        public Vector2 InteractionPosition => _interactionAction.ReadValue<Vector2>();
-        public event Action<Vector2> OnInputPositionPerformed;
+        public bool IsTapPressed => _tapAction.IsPressed();
+        public Vector2 TapPosition => GetInputPosition();
+        
+        public bool IsHoldPressed => _holdAction.IsPressed();
+        public Vector2 HoldPosition => GetInputPosition();
+        
+        public event Action<Vector2> OnTapPerformed;
+        public event Action<Vector2> OnHoldStarted;
+        public event Action<Vector2> OnHeld;
+        public event Action<Vector2> OnHoldCanceled;
 
         public InputService(InputActionAsset inputActionAsset)
         {
             _inputActions = inputActionAsset;
         }
 
-        public void Initialize() 
+        public void Initialize()
         {
             _inputActions.Enable();
-            _interactionAction = _inputActions.FindActionMap(PLAYER_ACTION_MAP).FindAction(INPUT_POSITION_ACTION);
-        
-            _interactionAction.performed += OnInputPosition;
+            var playerActionMap = _inputActions.FindActionMap(PLAYER_ACTION_MAP);
+            _tapAction = playerActionMap.FindAction(TAP_ACTION);
+            _holdAction = playerActionMap.FindAction(HOLD_ACTION);
+
+            _tapAction.performed += OnTapAction;
+            _holdAction.started += OnHoldAction;
+            _holdAction.canceled += OnHoldAction;
         }
 
-        public void Dispose() 
+        public void Dispose()
         {
             _inputActions.Disable();
-            _interactionAction.performed -= OnInputPosition;
+            _tapAction.performed -= OnTapAction;
+            _holdAction.started -= OnHoldAction;
+            _holdAction.canceled -= OnHoldAction;
         }
-    
-        private void OnInputPosition(InputAction.CallbackContext context) 
+
+        private void OnTapAction(InputAction.CallbackContext context)
         {
             if (context.performed)
             {
-                OnInputPositionPerformed?.Invoke(Pointer.current.position.ReadValue());
+                OnTapPerformed?.Invoke(GetInputPosition());
             }
+            
+        }
+
+        private void OnHoldAction(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                OnHoldStarted?.Invoke(GetInputPosition());
+                StartHoldAction();
+            }
+            if (context.canceled)
+            {
+                StopHoldAction();
+                OnHoldCanceled?.Invoke(GetInputPosition());
+            }
+        }
+
+        private void StartHoldAction()
+        {
+            _holdCts = new CancellationTokenSource();
+            var token = _holdCts.Token;
+            HoldLoopAsync(token).Forget();
+        }
+
+        private void StopHoldAction()
+        {
+            if (_holdCts != null && !_holdCts.IsCancellationRequested)
+            {
+                _holdCts.Cancel();
+                _holdCts.Dispose();
+                _holdCts = null;
+            }
+        }
+        
+        private async UniTask HoldLoopAsync(CancellationToken ct)
+        {
+            while (_holdAction.IsPressed() && !ct.IsCancellationRequested)
+            {
+                OnHeld?.Invoke(GetInputPosition());
+                await UniTask.Yield(PlayerLoopTiming.Update, cancellationToken: ct);
+            }
+        }
+        
+        private Vector2 GetInputPosition()
+        {
+            if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+                return Mouse.current.position.ReadValue();
+
+            if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+                return Touchscreen.current.primaryTouch.position.ReadValue();
+
+            return Vector2.zero;
         }
     }
 }

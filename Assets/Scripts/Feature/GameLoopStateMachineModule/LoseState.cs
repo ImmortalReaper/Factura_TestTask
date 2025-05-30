@@ -22,7 +22,7 @@ public class LoseState : IState
     public void Enter()
     {
         _uiService.Show<LoseUI>();
-        _inputService.OnInputPositionPerformed += OnInputPositionPerformed;
+        _inputService.OnTapPerformed += OnTapPerformed;
         if (_playerEntityModel.PlayerEntity != null)
         {
             CarController carController = _playerEntityModel.PlayerEntity.GetComponent<CarController>();
@@ -35,10 +35,10 @@ public class LoseState : IState
 
     public void Exit()
     {
-        _inputService.OnInputPositionPerformed -= OnInputPositionPerformed;
+        _inputService.OnTapPerformed -= OnTapPerformed;
     }
 
-    private void OnInputPositionPerformed(Vector2 position)
+    private void OnTapPerformed(Vector2 position)
     {
         Debug.Log("OnInputPositionPerformed");
         _addressablesSceneLoaderService.LoadSceneAsync(Address.Scenes.Gameplay);

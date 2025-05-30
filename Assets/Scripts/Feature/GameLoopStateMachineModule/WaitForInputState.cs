@@ -24,14 +24,14 @@ public class WaitForInputState : IState
             CarController carController = _playerEntityModel.PlayerEntity.GetComponent<CarController>();
             carController.CameraController.ActivateSideCamera();
         }
-        _inputService.OnInputPositionPerformed += OnInput;
+        _inputService.OnTapPerformed += OnTapPerformed;
     }
 
     public void Exit()
     {
-        _inputService.OnInputPositionPerformed -= OnInput;
+        _inputService.OnTapPerformed -= OnTapPerformed;
     }
     
-    private void OnInput(Vector2 position) =>
+    private void OnTapPerformed(Vector2 position) =>
         _gameLoopStateMachine.ChangeState<GameplayState>();
 }

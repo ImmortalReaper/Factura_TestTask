@@ -19,4 +19,4 @@ MonoBehaviour:
   CarMaxHealth: 100
   minHorizontalMovementCooldown: 5
   maxHorizontalMovementCooldown: 15
-  carHorizontalOffset: 4.5
+  carHorizontalOffset: 4

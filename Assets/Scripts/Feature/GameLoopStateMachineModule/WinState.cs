@@ -22,7 +22,7 @@ public class WinState : IState
     public void Enter()
     {
         _uiService.Show<WinUI>();
-        _inputService.OnInputPositionPerformed += OnInputPositionPerformed;
+        _inputService.OnTapPerformed += OnTapPerformed;
         if (_playerEntityModel.PlayerEntity != null)
         {
             CarController carController = _playerEntityModel.PlayerEntity.GetComponent<CarController>();
@@ -36,10 +36,10 @@ public class WinState : IState
 
     public void Exit()
     {
-        _inputService.OnInputPositionPerformed -= OnInputPositionPerformed;
+        _inputService.OnTapPerformed -= OnTapPerformed;
     }
 
-    private void OnInputPositionPerformed(Vector2 position)
+    private void OnTapPerformed(Vector2 position)
     {
         _addressablesSceneLoaderService.LoadSceneAsync(Address.Scenes.Gameplay);
     }

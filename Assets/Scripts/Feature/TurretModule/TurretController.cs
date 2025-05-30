@@ -32,19 +32,23 @@ public class TurretController : MonoBehaviour
         _camera = Camera.main;
         _bulletData = _bulletDataService.GetBulletData(BulletType.StandardBullet);
         _turretData = _turretDataService.GetTurretConfig(TurretType.StandardTurret);
+        _inputService.OnHeld += TurnTurretTowardsTarget;
+    }
+
+    private void OnDestroy()
+    {
+        _inputService.OnHeld -= TurnTurretTowardsTarget;
     }
 
     private void Update()
     {
-        if(!_inputService.IsInteractionPressed) return;
-        TurnTurretTowardsTarget();
         HandleShooting();
     }
 
-    private void TurnTurretTowardsTarget()
+    private void TurnTurretTowardsTarget(Vector2 position)
     {
-        if(!_isBarrelCanMove || !_inputService.IsInteractionPressed) return;
-        Ray ray = _camera.ScreenPointToRay(_inputService.InteractionPosition);
+        if(!_isBarrelCanMove) return;
+        Ray ray = _camera.ScreenPointToRay(position);
         if (!Physics.Raycast(ray, out RaycastHit hit, 300f, _turretDataService.GetTargetLayerMask())) return;
         Vector3 lookDir = hit.point - _turret.position;
         lookDir.y = 0;
