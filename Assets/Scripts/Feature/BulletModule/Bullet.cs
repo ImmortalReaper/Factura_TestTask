@@ -5,7 +5,7 @@ using Zenject;
 
 namespace ShootingCar.Feature.BulletModule
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IBullet
     {
         [SerializeField] private TrailRenderer _trailRenderer;
         [SerializeField] private Sensor _bulletSensor;
@@ -15,6 +15,7 @@ namespace ShootingCar.Feature.BulletModule
         private float _bulletLifeTime;
         private IObjectPoolService _objectPoolService;
     
+        public Transform Transform => transform;
         public float Damage => _bulletDamage;
     
         [Inject]

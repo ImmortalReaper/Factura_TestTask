@@ -88,9 +88,9 @@ namespace ShootingCar.Feature.TurretModule
     
         private void Shoot()
         {
-            Bullet bullet = _objectPoolService.GetTimed(_bulletData.BulletPrefab, _bulletData.BulletLifeTime);
-            bullet.transform.position = _turretFirePoint.position;
-            bullet.transform.rotation = _turretFirePoint.rotation;
+            IBullet bullet = _objectPoolService.GetTimed(_bulletData.BulletPrefab, _bulletData.BulletLifeTime);
+            bullet.Transform.position = _turretFirePoint.position;
+            bullet.Transform.rotation = _turretFirePoint.rotation;
             if (bullet != null)
             {
                 bullet.SetConfig(_bulletData);
